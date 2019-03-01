@@ -144,8 +144,8 @@ def massdns():
     word_file = os.path.join(
         script_path, "bin/sublst/all.txt" if bruteall else "bin/sublst/sl-domains.txt"
     )
-    massdnsCMD = "python {} {} {} | {} -r resolvers.txt -t A -a -o -w {}-massdns.txt".format(
-        os.path.join(script_path, "bin/subbrute/subbrute.py"),
+    massdnsCMD = "python {} {} {} | {} -r resolvers.txt -t A -o S -w {}-massdns.txt".format(
+        os.path.join(script_path, "bin/massdns/scripts/subbrute.py"),
         word_file,
         domain,
         os.path.join(script_path, "bin/massdns/bin/massdns"),
@@ -286,7 +286,7 @@ def upgradeFiles():
     subfinderUpgrade = "go get -u github.com/subfinder/subfinder"
     print("\n\033[1;31mInstalling Subfinder \033[1;37m")
     os.system(subfinderUpgrade)
-    massdnsUpgrade = "git clone --branch v0.2 --single-branch https://github.com/blechschmidt/massdns ./bin/massdns"
+    massdnsUpgrade = "git clone https://github.com/blechschmidt/massdns ./bin/massdns"
     print("\n\033[1;31mInstalling massdns \033[1;37m")
     os.system(massdnsUpgrade)
     massdnsMake = "make -C ./bin/massdns"
